@@ -1,7 +1,7 @@
 // Copyright Chun Shen @ 2017
 
 #ifndef PRETTY_OSTREAM_H_
-#define PRETTY_OSTEAM_H_
+#define PRETTY_OSTREAM_H_
 
 #include <iostream>
 #include <sstream>
@@ -14,4 +14,4 @@ class pretty_ostream {
 
 }
 
-#endif  // PRETTY_OSTEAM_H_
+#endif  // PRETTY_OSTREAM_H_
