@@ -1,39 +1,35 @@
 // Copyright Chun Shen @ 2017
-#include<stddef.h>
-#include<fstream>
+#include <stddef.h>
+#include <fstream>
 
 #include "pretty_ostream.h"
 
 using namespace std;
 
-#include <sys/time.h>
-#include <sys/resource.h>
+pretty_ostream::pretty_ostream() {}
 
-long get_memory_usage() {
-    struct rusage usage;
-    if (getrusage(RUSAGE_SELF, &usage) == 0) {
-        return(usage.ru_maxrss/1024./1024.);  // bytes
-    } else {
-        return(0);
-    }
+pretty_ostream::~pretty_ostream() {}
+
+
+//! This function output information message
+void pretty_ostream::info(string message) {
+    cout << "[Info] " << message << RESET << endl;
 }
 
-#define BLACK   "\033[30m"      /* Black */
-#define RED     "\033[31m"      /* Red */
-#define GREEN   "\033[32m"      /* Green */
-#define YELLOW  "\033[33m"      /* Yellow */
-#define BLUE    "\033[34m"      /* Blue */
-#define MAGENTA "\033[35m"      /* Magenta */
-#define CYAN    "\033[36m"      /* Cyan */
-#define WHITE   "\033[37m"      /* White */
-#define BOLDBLACK   "\033[1m\033[30m"      /* Bold Black */
-#define BOLDRED     "\033[1m\033[31m"      /* Bold Red */
-#define BOLDGREEN   "\033[1m\033[32m"      /* Bold Green */
-#define BOLDYELLOW  "\033[1m\033[33m"      /* Bold Yellow */
-#define BOLDBLUE    "\033[1m\033[34m"      /* Bold Blue */
-#define BOLDMAGENTA "\033[1m\033[35m"      /* Bold Magenta */
-#define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
-#define BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
- 
-#define CLEAR "\033[2J"  // clear screen escape code 
 
+//! This function output debug message
+void pretty_ostream::debug(string message) {
+    cout << CYAN << "[debug] " << message << RESET << endl;
+}
+
+
+//! This function output warning message
+void pretty_ostream::warning(string message) {
+    cout << BOLD << YELLOW << "[Warning] " << message << RESET << endl;
+}
+
+
+//! This function output error message
+void pretty_ostream::error(string message) {
+    cout << BOLD << RED << "[Error] " << message << RESET << endl;
+}
