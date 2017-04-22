@@ -16,12 +16,14 @@
 
 #include <iostream>
 #include <sstream>
+#include <cstring>
 
 using namespace std;
 
 class pretty_ostream {
  private:
     ostringstream message_stream;
+
  public:
     pretty_ostream();
     ~pretty_ostream();
@@ -38,6 +40,9 @@ class pretty_ostream {
     //! This function output error message
     void error(string message);
 
+    //! This function returns a string for the memory usage
+    //! of the current program in MB
+    string get_memory_usage();
 };
 
 #endif  // PRETTY_OSTREAM_H_
