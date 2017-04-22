@@ -1,6 +1,4 @@
 // Copyright Chun Shen @ 2017
-#include <stddef.h>
-#include <fstream>
 #include <iomanip>
 #include <sys/time.h>
 #include <sys/resource.h>
@@ -22,7 +20,8 @@ void pretty_ostream::info(string message) {
 
 //! This function output debug message
 void pretty_ostream::debug(string message) {
-    cout << CYAN << "[debug] " << message << RESET << endl;
+    cout << CYAN << "[debug] " << get_memory_usage() << " "
+         << message << RESET << endl;
 }
 
 
