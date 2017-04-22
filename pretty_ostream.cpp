@@ -12,6 +12,22 @@ pretty_ostream::pretty_ostream() {}
 pretty_ostream::~pretty_ostream() {}
 
 
+//! This function flushes out message to the screen
+void pretty_ostream::flush(string type) {
+    std::transform(type.begin(), type.end(), type.begin(), ::tolower);
+    if (type == "info") {
+        info(message_stream.str());
+    } else if (type == "warning") {
+        warning(message_stream.str());
+    } else if (type == "error") {
+        error(message_stream.str());
+    } else if (type == "debug") {
+        debug(message_stream.str());
+    }
+    message_stream.str("");
+    message_stream.clear();
+}
+
 //! This function output information message
 void pretty_ostream::info(string message) {
     cout << "[Info] " << get_memory_usage() << " " << message << RESET << endl;

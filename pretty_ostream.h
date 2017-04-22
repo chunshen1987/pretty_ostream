@@ -28,6 +28,8 @@ class pretty_ostream {
     pretty_ostream();
     ~pretty_ostream();
 
+    void flush(string type);
+
     //! This function output information message
     void info(string message);
 
@@ -43,6 +45,12 @@ class pretty_ostream {
     //! This function returns a string for the memory usage
     //! of the current program in MB
     string get_memory_usage();
+
+    //! reload the << operator
+    template <typename T> pretty_ostream& operator<<(T const& value) {
+        message_stream << value;
+        return(*this);
+    }
 };
 
 #endif  // PRETTY_OSTREAM_H_
